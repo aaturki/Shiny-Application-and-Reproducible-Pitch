@@ -1,0 +1,32 @@
+---
+title: "Shiny Application and Reproducible Pitch"
+author: "Turki"
+date: "Jun 10, 2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+## Galton Families Dataset
+
+The data used in the app comes from the GaltonFamilies dataset. 
+
+```{r summary}
+library(HistData)
+data(GaltonFamilies)
+summary(GaltonFamilies)
+```
+
+## Plot
+In the scatterplot below are represented the data used for the prediction model
+```{r plot}
+library(HistData)
+data(GaltonFamilies)
+plot(jitter(GaltonFamilies$childHeight) ~ GaltonFamilies$midparentHeight,xlab="Average Height of the Parents (in inches)",ylab="Height of the Child (in inches)",main="Scatterplot of Galton Family Data",pch=19,frame.plot=FALSE,col=ifelse(GaltonFamilies$gender=="female", "pink", "light blue"))
+legend(65,80,pch=c(19,19),col=c("pink","light blue"),c("female", "male"),bty="o",cex=.8)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
